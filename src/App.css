@@ -35,3 +35,7 @@
     color: #808080;
     text-transform: uppercase;
 }
+.delete-btn{
+    background:#fa9c9c;
+    color: #000;
+}
