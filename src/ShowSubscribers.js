@@ -1,40 +1,36 @@
 import React, {Component} from 'react';
 import Header from "./Header";
-import './App.css';
+import './ShowSubscribers.css';
+import './common.css'
+import{Link} from 'react-router-dom'
 
-class App extends Component {
+class ShowSubscribers extends Component {
+    
+      
   
-  
+   deleteHandler(message){
+    alert(message);
+  } 
   render(){
-    let subscribers =[
-      {
-        id:1,
-      name: "Shilpa shrithi",
-      phone: "998888878"
-      },
-      {
-        id: 2,
-        name: "priyanka",
-        phone: "87957669959"
-      }
-    ]
+    
+     
   return (
     <div className="component-container">
    
-     <Header/>
+     <Header heading="Phone directory"/>
      <div className="component-body-container">
-       <button className="custom-btn add-btn">Add</button>
+       <Link to="/add"><button className="custom-btn add-btn">Add</button></Link>
        <div className="grid-container heading-container">
          <span className="grid-item name-heading">Name</span>
          <span className="grid-item phone-heading">Phone</span>
        </div>
       {
-        subscribers.map(sub =>{
+        this.props.subscribersList.map(sub =>{
           return <div key={sub.id} className="grid-container">
             <span className="grid-item">{sub.name}</span>
             <span className="grid-item">{sub.phone}</span>
             <span className="grid-item action-btn-container">
-            <button className="custom-btn delete-btn" > Delete </button>
+            <button className="custom-btn delete-btn" onClick={this.deleteHandler.bind(this,"deleted clicked")} > Delete </button>
             </span>
             </div>
         })
@@ -49,4 +45,4 @@ class App extends Component {
 }
 }
 
-export default App;
+export default ShowSubscribers;
